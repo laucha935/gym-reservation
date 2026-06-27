@@ -12,7 +12,7 @@
 
 .container-grid {
   display: grid;
-  gap: 0.875rem;
+  gap: 1rem;
 }
 
 .container-card {
@@ -22,8 +22,14 @@
   border-radius: 8px;
   display: grid;
   gap: 1rem;
-  padding: 1rem;
-  transition: border-color 160ms ease, box-shadow 160ms ease;
+  padding: 1.125rem;
+  transition: border-color 160ms ease, box-shadow 160ms ease, transform 160ms ease;
+}
+
+.container-card:hover {
+  border-color: #b7c3d7;
+  box-shadow: 0 12px 28px rgba(15, 23, 42, 0.08);
+  transform: translateY(-1px);
 }
 
 .container-card-selected {
@@ -44,6 +50,7 @@
 .container-card h3 {
   color: #111827;
   font-size: 1.125rem;
+  font-weight: 800;
   line-height: 1.3;
 }
 
@@ -63,7 +70,7 @@
   font-weight: 700;
   justify-self: flex-start;
   min-height: 2.5rem;
-  padding: 0.625rem 0.875rem;
+  padding: 0.625rem 1rem;
   transition: background-color 160ms ease, box-shadow 160ms ease;
 }
 
@@ -74,4 +81,10 @@
 .container-card button:focus-visible {
   box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.28);
   outline: none;
+}
+
+@media (min-width: 768px) {
+  .container-card {
+    grid-template-columns: minmax(0, 1fr) auto;
+  }
 }

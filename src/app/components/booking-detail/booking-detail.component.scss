@@ -16,7 +16,7 @@
   border-radius: 8px;
   display: grid;
   gap: 1rem;
-  padding: 1rem;
+  padding: 1.125rem;
 }
 
 .card-info {
@@ -33,6 +33,7 @@
 .container-card h3 {
   color: #111827;
   font-size: 1.125rem;
+  font-weight: 800;
   line-height: 1.3;
 }
 
@@ -53,7 +54,7 @@
   font-weight: 700;
   justify-self: flex-start;
   min-height: 2.5rem;
-  padding: 0.625rem 0.875rem;
+  padding: 0.625rem 1rem;
   transition: background-color 160ms ease, box-shadow 160ms ease;
 }
 

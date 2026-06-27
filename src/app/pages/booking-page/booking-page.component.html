@@ -5,21 +5,29 @@
     <p>Elegí una clase, revisa los datos y reserva tu cupo.</p>
   </header>
 
-  @if (successMessage()) {
-    <p class="success-message">{{ successMessage() }}</p>
+  @if (isLoading()) {
+    <p class="state-message">Cargando reservas disponibles...</p>
+  } @else if (error()) {
+    <p class="state-message state-message-error">{{ error() }}</p>
+  } @else if (bookings().length === 0) {
+    <p class="state-message">No hay clases disponibles en este momento.</p>
+  } @else {
+    @if (successMessage()) {
+      <p class="success-message">{{ successMessage() }}</p>
+    }
+
+    <div class="container-grid">
+      <app-booking-list
+        [bookings]="bookings()"
+        [selectedBookingId]="selectedBooking()?.id ?? null"
+        (bookingSelected)="selectBooking($event)"
+      />
+
+      <app-booking-detail
+        [booking]="selectedBooking()"
+        [reservedBookingId]="reservedBookingId()"
+        (bookingReserved)="reserveBooking($event)"
+      />
+    </div>
   }
-
-  <div class="container-grid">
-    <app-booking-list
-      [bookings]="bookings()"
-      [selectedBookingId]="selectedBooking()?.id ?? null"
-      (bookingSelected)="selectBooking($event)"
-    />
-
-    <app-booking-detail
-      [booking]="selectedBooking()"
-      [reservedBookingId]="reservedBookingId()"
-      (bookingReserved)="reserveBooking($event)"
-    />
-  </div>
 </section>

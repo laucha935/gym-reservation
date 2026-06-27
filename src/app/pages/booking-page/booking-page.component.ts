@@ -49,7 +49,7 @@ export class BookingPageComponent implements OnInit {
           this.bookings.set(bookings);
         },
         error: () => {
-          this.error.set('No pudimos cargar las reservas. Intenta nuevamente.');
+          this.error.set('No pudimos cargar las reservas. Intentá nuevamente.');
         },
       });
   }
