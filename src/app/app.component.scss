@@ -1,0 +1,27 @@
+.container {
+  box-sizing: border-box;
+  display: grid;
+  gap: 2rem;
+  margin: 0 auto;
+  max-width: 1120px;
+  padding: 2rem 1rem;
+  width: 100%;
+}
+
+.container-header {
+  border-bottom: 1px solid #d7dde8;
+  padding-bottom: 1rem;
+}
+
+.container h1 {
+  color: #111827;
+  font-size: 1.75rem;
+  line-height: 1.2;
+  margin: 0;
+}
+
+@media (min-width: 768px) {
+  .container {
+    padding: 3rem 1.5rem;
+  }
+}

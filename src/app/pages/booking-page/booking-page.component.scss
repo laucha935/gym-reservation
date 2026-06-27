@@ -1,0 +1,31 @@
+.container {
+  display: grid;
+  gap: 1.5rem;
+}
+
+.container-header {
+  display: grid;
+  gap: 0.5rem;
+}
+
+.section-label {
+  color: #2563eb;
+  font-size: 0.8125rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  margin: 0;
+  text-transform: uppercase;
+}
+
+.container h2 {
+  color: #111827;
+  font-size: 2rem;
+  line-height: 1.2;
+  margin: 0;
+}
+
+.container p {
+  color: #4b5563;
+  line-height: 1.6;
+  margin: 0;
+}

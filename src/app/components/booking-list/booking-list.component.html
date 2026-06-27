@@ -1,0 +1,21 @@
+<section class="container" aria-labelledby="booking-list-title">
+  <h2 id="booking-list-title">Reservas disponibles</h2>
+
+  <div class="container-grid">
+    @for (booking of bookings; track booking.id) {
+      <article
+        class="container-card"
+        [class.container-card-selected]="booking.id === selectedBookingId"
+      >
+        <div class="card-info">
+          <h3>{{ booking.className }}</h3>
+          <p>Profesor: {{ booking.instructor }}</p>
+          <p>Horario: {{ booking.schedule }}</p>
+          <p>Cupos disponibles: {{ booking.availableSpots }}</p>
+        </div>
+
+        <button type="button" (click)="selectBooking(booking)">Ver mas</button>
+      </article>
+    }
+  </div>
+</section>
