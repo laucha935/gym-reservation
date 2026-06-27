@@ -11,7 +11,7 @@ import { IntBooking } from '../../models/booking.model';
 })
 export class BookingDetailComponent {
   @Input() booking: IntBooking | null = null;
-  @Input() reservedBookingId: number | null = null;
+  @Input() isReserved = false;
 
   @Output() bookingReserved = new EventEmitter<IntBooking>();
 

@@ -12,10 +12,16 @@
 
       <button
         type="button"
-        [disabled]="booking.id === reservedBookingId"
+        [disabled]="booking.availableSpots === 0 || isReserved"
         (click)="reserveBooking()"
       >
-        Reservar
+        @if (isReserved) {
+          Reservado
+        } @else if (booking.availableSpots === 0) {
+          Sin cupos
+        } @else {
+          Reservar
+        }
       </button>
     </article>
   } @else {

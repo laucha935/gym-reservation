@@ -25,7 +25,7 @@
 
       <app-booking-detail
         [booking]="selectedBooking()"
-        [reservedBookingId]="reservedBookingId()"
+        [isReserved]="selectedBooking() ? reservedBookingIds().includes(selectedBooking()!.id) : false"
         (bookingReserved)="reserveBooking($event)"
       />
     </div>

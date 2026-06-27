@@ -20,7 +20,7 @@ export class BookingPageComponent implements OnInit {
   readonly selectedBooking = signal<IntBooking | null>(null);
   readonly isLoading = signal(false);
   readonly error = signal<string | null>(null);
-  readonly reservedBookingId = signal<number | null>(null);
+  readonly reservedBookingIds = signal<number[]>([]);
   readonly successMessage = signal<string | null>(null);
 
   ngOnInit(): void {
@@ -33,8 +33,24 @@ export class BookingPageComponent implements OnInit {
   }
 
   reserveBooking(booking: IntBooking): void {
-    this.reservedBookingId.set(booking.id);
-    this.successMessage.set(`Reserva confirmada para ${booking.className}.`);
+    if (booking.availableSpots <= 0 || this.reservedBookingIds().includes(booking.id)) {
+      return;
+    }
+
+    const updatedBooking: IntBooking = {
+      ...booking,
+      availableSpots: booking.availableSpots - 1,
+    };
+
+    this.bookings.update((bookings) =>
+      bookings.map((currentBooking) =>
+        currentBooking.id === updatedBooking.id ? updatedBooking : currentBooking
+      )
+    );
+
+    this.selectedBooking.set(updatedBooking);
+    this.reservedBookingIds.update((ids) => [...ids, updatedBooking.id]);
+    this.successMessage.set(`Reserva confirmada para ${updatedBooking.className}.`);
   }
 
   private loadBookings(): void {

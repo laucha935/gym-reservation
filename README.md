@@ -6,11 +6,13 @@ Aplicación Angular para visualizar clases disponibles de gimnasio y simular la 
 
 - Angular 17.3.12
 - Angular CLI 17.3.17
-- TypeScript
+- Angular DevKit Build Angular 17.3.17
+- TypeScript 5.4.5
 - Standalone components
 - Signals
-- RxJS
+- RxJS 7.8.2
 - HttpClient
+- Zone.js 0.14.10
 - SCSS
 
 ## Requisitos
@@ -50,6 +52,23 @@ http://localhost:4200/bookings
 
 ```bash
 npm run build
+```
+
+## Testing
+
+El proyecto incluye un test unitario mínimo para `BookingService`.
+
+El test valida:
+
+- Creación del servicio.
+- Llamada HTTP `GET /bookings`.
+- Respuesta tipada con reservas.
+- Propagación de errores HTTP.
+
+Para ejecutar los tests:
+
+```bash
+npm run test
 ```
 
 ## Arquitectura
@@ -111,6 +130,8 @@ La pantalla contempla:
 - Error: si falla la llamada HTTP.
 - Empty state: si no hay clases disponibles.
 - Success: cuando se confirma una reserva simulada.
+- Al reservar una clase, se descuenta un cupo disponible en memoria.
+- Una clase ya reservada queda deshabilitada para evitar una segunda reserva del mismo usuario.
 
 ## Simulación de API
 
@@ -123,12 +144,3 @@ GET /bookings
 La respuesta se simula con `mockBookingsInterceptor`, que intercepta esa llamada y devuelve datos mockeados de tipo `IntBooking[]`.
 
 La lógica de datos se mantiene fuera de los componentes presentacionales.
-
-## Decisiones técnicas
-
-- Se usaron standalone components para mantener una estructura simple.
-- Se usaron signals para manejar estado local en `BookingPageComponent`.
-- La comunicación entre componentes se hizo con `@Input()` y `@Output()`.
-- La API se simuló con un interceptor HTTP para conservar el uso real de `HttpClient`.
-- Los estilos se implementaron con SCSS puro, sin librerías visuales externas.
-- El layout responsive usa CSS Grid para mostrar listado y detalle en dos columnas desde `768px`.
