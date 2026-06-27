@@ -1,0 +1,24 @@
+<section class="container" aria-labelledby="booking-detail-title">
+  <h2 id="booking-detail-title">Detalle de reserva</h2>
+
+  @if (booking) {
+    <article class="container-card">
+      <div class="card-info">
+        <h3>{{ booking.className }}</h3>
+        <p>Profesor: {{ booking.instructor }}</p>
+        <p>Horario: {{ booking.schedule }}</p>
+        <p>Cupos disponibles: {{ booking.availableSpots }}</p>
+      </div>
+
+      <button
+        type="button"
+        [disabled]="booking.id === reservedBookingId"
+        (click)="reserveBooking()"
+      >
+        Reservar
+      </button>
+    </article>
+  } @else {
+    <p class="empty-message">Selecciona una clase para ver el detalle.</p>
+  }
+</section>

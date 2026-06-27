@@ -2,6 +2,24 @@
   <header class="container-header">
     <p class="section-label">Gym Reservation</p>
     <h2 id="booking-page-title">Reservas disponibles</h2>
-    <p>Pantalla inicial de reservas</p>
+    <p>Elegí una clase, revisa los datos y reserva tu cupo.</p>
   </header>
+
+  @if (successMessage()) {
+    <p class="success-message">{{ successMessage() }}</p>
+  }
+
+  <div class="container-grid">
+    <app-booking-list
+      [bookings]="bookings()"
+      [selectedBookingId]="selectedBooking()?.id ?? null"
+      (bookingSelected)="selectBooking($event)"
+    />
+
+    <app-booking-detail
+      [booking]="selectedBooking()"
+      [reservedBookingId]="reservedBookingId()"
+      (bookingReserved)="reserveBooking($event)"
+    />
+  </div>
 </section>
