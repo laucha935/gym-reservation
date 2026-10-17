@@ -1,0 +1,21 @@
+<div
+  class="modal-backdrop"
+  role="presentation"
+  (click)="closeModal()"
+>
+  <section
+    class="reservation-modal"
+    role="dialog"
+    aria-modal="true"
+    aria-labelledby="reservation-modal-title"
+    (click)="$event.stopPropagation()"
+  >
+    <h3 id="reservation-modal-title">Reserva exitosa</h3>
+
+    @if (message) {
+      <p>{{ message }}</p>
+    }
+
+    <button type="button" (click)="closeModal()">Aceptar</button>
+  </section>
+</div>

@@ -1,8 +1,12 @@
 <section class="container" aria-labelledby="booking-page-title">
   <header class="container-header">
-    <p class="section-label">Gym Reservation</p>
-    <h2 id="booking-page-title">Reservas disponibles</h2>
-    <p>Elegí una clase, revisa los datos y reserva tu cupo.</p>
+    <div class="header-content">
+      <p class="section-label">Gym Reservation</p>
+      <h2 id="booking-page-title">Reservas disponibles</h2>
+      <p>Elegí una clase, revisa los datos y reserva tu cupo.</p>
+    </div>
+
+    <a class="my-reservations-link" routerLink="/detail">Ver mis reservas</a>
   </header>
 
   @if (isLoading()) {
@@ -12,10 +16,6 @@
   } @else if (bookings().length === 0) {
     <p class="state-message">No hay clases disponibles en este momento.</p>
   } @else {
-    @if (successMessage()) {
-      <p class="success-message">{{ successMessage() }}</p>
-    }
-
     <div class="container-grid">
       <app-booking-list
         [bookings]="bookings()"
@@ -29,5 +29,12 @@
         (bookingReserved)="reserveBooking($event)"
       />
     </div>
+  }
+
+  @if (showReservationModal()) {
+    <app-reservation-modal
+      [message]="successMessage()"
+      (modalClosed)="closeReservationModal()"
+    />
   }
 </section>

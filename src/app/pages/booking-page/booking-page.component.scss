@@ -5,6 +5,11 @@
 
 .container-header {
   display: grid;
+  gap: 1rem;
+}
+
+.header-content {
+  display: grid;
   gap: 0.625rem;
 }
 
@@ -36,13 +41,27 @@
   gap: 1rem;
 }
 
-.success-message {
-  background: #ecfdf3;
-  border: 1px solid #bbf7d0;
-  border-radius: 8px;
-  color: #166534;
+.my-reservations-link {
+  align-items: center;
+  background: #111827;
+  border-radius: 6px;
+  color: #ffffff;
+  display: inline-flex;
   font-weight: 700;
-  padding: 0.875rem 1rem;
+  justify-self: flex-start;
+  min-height: 2.5rem;
+  padding: 0.625rem 1rem;
+  text-decoration: none;
+  transition: background-color 160ms ease, box-shadow 160ms ease;
+}
+
+.my-reservations-link:hover {
+  background: #374151;
+}
+
+.my-reservations-link:focus-visible {
+  box-shadow: 0 0 0 3px rgba(17, 24, 39, 0.24);
+  outline: none;
 }
 
 .state-message {
@@ -62,6 +81,11 @@
 @media (min-width: 768px) {
   .container {
     gap: 1.5rem;
+  }
+
+  .container-header {
+    align-items: end;
+    grid-template-columns: minmax(0, 1fr) auto;
   }
 
   .container h2 {

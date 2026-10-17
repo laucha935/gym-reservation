@@ -1,0 +1,37 @@
+<article class="reservation-card">
+  <div class="reservation-header">
+    <div>
+      <p class="reservation-status">{{ reservation.statusLabel }}</p>
+      <h3>{{ reservation.className }}</h3>
+    </div>
+
+    <button
+      type="button"
+      [disabled]="!reservation.canCancel"
+      (click)="cancelReservation()"
+    >
+      Cancelar
+    </button>
+  </div>
+
+  <dl class="reservation-details">
+    <div>
+      <dt>Profesor</dt>
+      <dd>{{ reservation.instructor }}</dd>
+    </div>
+    <div>
+      <dt>Fecha</dt>
+      <dd>{{ reservation.dateLabel }}</dd>
+    </div>
+    <div>
+      <dt>Horario</dt>
+      <dd>{{ reservation.timeLabel }}</dd>
+    </div>
+    <div>
+      <dt>Duracion</dt>
+      <dd>{{ reservation.durationLabel }}</dd>
+    </div>
+  </dl>
+
+  <app-reservation-exercises [exercises]="reservation.exercises" />
+</article>

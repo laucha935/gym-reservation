@@ -1,0 +1,8 @@
+<section class="reservation-list" aria-label="Reservas activas">
+  @for (reservation of reservations; track reservation.id) {
+    <app-reservation-card
+      [reservation]="reservation"
+      (reservationCancelled)="cancelReservation($event)"
+    />
+  }
+</section>

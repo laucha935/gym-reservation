@@ -1,0 +1,17 @@
+<section class="exercises" aria-label="Ejercicios propuestos">
+  <h4>Ejercicios propuestos</h4>
+
+  @if (exercises.length > 0) {
+    <ul>
+      @for (exercise of exercises; track exercise.id) {
+        <li>
+          <strong>{{ exercise.name }}</strong>
+          <span>{{ exercise.description }}</span>
+          <small>{{ exercise.muscleGroup }} - {{ exercise.estimatedTimeLabel }}</small>
+        </li>
+      }
+    </ul>
+  } @else {
+    <p>No hay ejercicios cargados para esta clase.</p>
+  }
+</section>

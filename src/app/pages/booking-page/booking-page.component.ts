@@ -1,15 +1,17 @@
 import { Component, inject, OnInit, signal } from '@angular/core';
+import { RouterLink } from '@angular/router';
 import { finalize } from 'rxjs';
 
 import { BookingDetailComponent } from '../../components/booking-detail/booking-detail.component';
 import { BookingListComponent } from '../../components/booking-list/booking-list.component';
+import { ReservationModalComponent } from '../../components/reservation-modal/reservation-modal.component';
 import { IntBooking } from '../../models/booking.model';
 import { BookingService } from '../../services/booking.service';
 
 @Component({
   selector: 'app-booking-page',
   standalone: true,
-  imports: [BookingListComponent, BookingDetailComponent],
+  imports: [RouterLink, BookingListComponent, BookingDetailComponent, ReservationModalComponent],
   templateUrl: './booking-page.component.html',
   styleUrl: './booking-page.component.scss',
 })
@@ -22,6 +24,7 @@ export class BookingPageComponent implements OnInit {
   readonly error = signal<string | null>(null);
   readonly reservedBookingIds = signal<number[]>([]);
   readonly successMessage = signal<string | null>(null);
+  readonly showReservationModal = signal(false);
 
   ngOnInit(): void {
     this.loadBookings();
@@ -51,6 +54,11 @@ export class BookingPageComponent implements OnInit {
     this.selectedBooking.set(updatedBooking);
     this.reservedBookingIds.update((ids) => [...ids, updatedBooking.id]);
     this.successMessage.set(`Reserva confirmada para ${updatedBooking.className}.`);
+    this.showReservationModal.set(true);
+  }
+
+  closeReservationModal(): void {
+    this.showReservationModal.set(false);
   }
 
   private loadBookings(): void {

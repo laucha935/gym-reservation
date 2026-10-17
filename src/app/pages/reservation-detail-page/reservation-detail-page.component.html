@@ -1,0 +1,30 @@
+<section class="container" aria-labelledby="reservation-detail-title">
+  <header class="container-header">
+    <div class="header-content">
+      <p class="section-label">Mis reservas</p>
+      <h2 id="reservation-detail-title">Reservas activas</h2>
+      <p>Consulta el detalle de tus clases reservadas y cancela las que no puedas asistir.</p>
+    </div>
+
+    <a class="back-link" routerLink="/bookings">Volver</a>
+  </header>
+
+  @if (isLoading()) {
+    <p class="state-message">Cargando reservas activas...</p>
+  } @else if (error()) {
+    <p class="state-message state-message-error">{{ error() }}</p>
+  } @else {
+    @if (cancellationMessage()) {
+      <p class="success-message">{{ cancellationMessage() }}</p>
+    }
+
+    @if (reservations().length > 0) {
+      <app-reservation-list
+        [reservations]="reservations()"
+        (reservationCancelled)="cancelReservation($event)"
+      />
+    } @else {
+      <app-reservation-empty-state />
+    }
+  }
+</section>
