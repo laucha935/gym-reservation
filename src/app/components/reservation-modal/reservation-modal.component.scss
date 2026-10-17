@@ -1,0 +1,57 @@
+.modal-backdrop {
+  align-items: center;
+  background: rgba(17, 24, 39, 0.58);
+  display: flex;
+  inset: 0;
+  justify-content: center;
+  padding: 1rem;
+  position: fixed;
+  z-index: 20;
+}
+
+.reservation-modal {
+  background: #ffffff;
+  border-radius: 8px;
+  box-shadow: 0 24px 60px rgba(15, 23, 42, 0.28);
+  display: grid;
+  gap: 1rem;
+  max-width: 28rem;
+  padding: 1.5rem;
+  width: 100%;
+}
+
+.reservation-modal h3 {
+  color: #166534;
+  font-size: 1.5rem;
+  line-height: 1.2;
+  margin: 0;
+}
+
+.reservation-modal p {
+  color: #4b5563;
+  line-height: 1.6;
+  margin: 0;
+}
+
+.reservation-modal button {
+  background: #2563eb;
+  border: 0;
+  border-radius: 6px;
+  color: #ffffff;
+  cursor: pointer;
+  font: inherit;
+  font-weight: 700;
+  justify-self: flex-start;
+  min-height: 2.5rem;
+  padding: 0.625rem 1rem;
+  transition: background-color 160ms ease, box-shadow 160ms ease;
+}
+
+.reservation-modal button:hover {
+  background: #1d4ed8;
+}
+
+.reservation-modal button:focus-visible {
+  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.28);
+  outline: none;
+}

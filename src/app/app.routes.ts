@@ -12,6 +12,13 @@ export const routes: Routes = [
       import('./pages/booking-page/booking-page.component').then((m) => m.BookingPageComponent),
   },
   {
+    path: 'detail',
+    loadComponent: () =>
+      import('./pages/reservation-detail-page/reservation-detail-page.component').then(
+        (m) => m.ReservationDetailPageComponent
+      ),
+  },
+  {
     path: '**',
     redirectTo: 'bookings',
   },
